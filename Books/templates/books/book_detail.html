@@ -1,0 +1,11 @@
+{% extends "books/base.html" %}
+{% block content %}
+
+<p class="h1">
+    {{ book.title }} {{ book.author }} {{ book.publication_date }}{{ book.isbn_10}}{{ book.pages }}
+</p>
+<div class="text-right">
+<a class="btn btn-dark" href="{% url 'books-list' %}" role="button">Go Back</a>
+</div>
+
+{% endblock content %}

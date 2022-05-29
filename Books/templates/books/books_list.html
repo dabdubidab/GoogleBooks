@@ -1,0 +1,21 @@
+{% extends "books/base.html" %}
+
+
+{% block content %}
+
+<h1>Books</h1>
+<form method="GET">
+    <input type="text" name="search-area" value="{{search_input}}">
+    <input type="submit" value="Search">
+</form>
+<div class="text-right">
+    <a class="btn btn-dark" href="" role="button"></a>
+</div>
+    {% for book in books %}
+        <div class="list-group">
+            <a href="{% url 'book-detail' book.pk %}" class="list-group-item list-group-item-dark">{{book.title}}</a>
+        </div>
+    {% empty %}
+        <h3>No books in list </h3>
+    {% endfor %}
+{% endblock content %}
