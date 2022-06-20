@@ -1,0 +1,45 @@
+{% extends "books/base.html" %}
+{% load bootstrap4 %}
+{% load extras %}
+{% block content %}
+<form method="GET">
+    <input type="text" name="search-area" value="{{search_input}}">
+    <input type="submit" value="Search">
+</form>
+        {% for title, author, date, lang in response %}
+<form method="POST">
+        {% csrf_token %}
+    <input  type="hidden" name="title" value="{{ title }}">
+    <input  type="hidden" name="author" value="{{ author }}">
+    <input  type="hidden" name="publication_date" value="{{ date }}">
+    <input  type="hidden" name="language" value="{{ lang }}">
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="w-25">Tytuł</th>
+      <th scope="col" class="w-25">Autor</th>
+      <th scope="col" class="w-25">Data Publikacji</th>
+      <th scope="col" class="w-25">Język</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr>
+      <td>{{title}}</td>
+      <td>{{author}}</td>
+      <td>{{date}}</td>
+      <td>{{lang}}</td>
+      <td><input type="submit" value="Add"></td>
+    </tr>
+  </tbody>
+</table>
+</form>
+
+
+
+  {% endfor %}
+
+
+{% endblock content %}
